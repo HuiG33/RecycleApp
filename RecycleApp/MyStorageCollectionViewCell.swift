@@ -10,5 +10,11 @@ import UIKit
 
 class MyStorageCollectionViewCell: UICollectionViewCell {
     
+    @IBOutlet weak var myImage: UIImageView!
     @IBOutlet weak var myLabel: UILabel!
+    
+    func displayContent(image: UIImage, title: String) {
+        myImage.image = image
+        myLabel.text = title
+    }
 }

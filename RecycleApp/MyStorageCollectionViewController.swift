@@ -61,7 +61,9 @@ class MyStorageCollectionViewController: UICollectionViewController {
     
         // Configure the cell
         
-        cell.myLabel.text = myItems[indexPath.item]
+        //cell.myLabel.text = myItems[indexPath.item]
+        
+        cell.displayContent(image: #imageLiteral(resourceName: "defaultItem"), title: myItems[indexPath.item])
         
         return cell
     }
