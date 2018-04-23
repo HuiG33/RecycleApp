@@ -103,7 +103,7 @@ class MyStorageCollectionViewController: UICollectionViewController {
         selectedItem = myItems[indexPath.item]
         let mainStoryBoard:UIStoryboard = UIStoryboard(name: "Main", bundle: nil)
         let SIVC = mainStoryBoard.instantiateViewController(withIdentifier: "singleItem") as! SingleItemViewController
-        SIVC.thing = selectedItem
+        SIVC.labelText = selectedItem
         self.navigationController?.pushViewController(SIVC, animated: true)
     }
 }

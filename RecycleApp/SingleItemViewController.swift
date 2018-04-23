@@ -10,14 +10,14 @@ import UIKit
 
 class SingleItemViewController: UIViewController {
 
-    var thing: String = ""
+    var labelText: String = ""
     
     @IBOutlet weak var myLabel: UILabel!
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        myLabel.text = thing
+        myLabel.text = labelText
         
         // Do any additional setup after loading the view.
     }
