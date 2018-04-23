@@ -1,5 +1,5 @@
 //
-//  SignInViewController.swift
+//  SingleItemViewController.swift
 //  RecycleApp
 //
 //  Created by Joni Tefke on 18/04/2018.
@@ -8,14 +8,20 @@
 
 import UIKit
 
-class SignInViewController: UIViewController {
+class SingleItemViewController: UIViewController {
 
-    @IBOutlet weak var inputUsername: UITextField!
-    @IBOutlet weak var inputPassword: UITextField!
+    @IBOutlet weak var myImage: UIImageView!
+    @IBOutlet weak var myLabel: UILabel!
+    
+    var itemImage: UIImage?
+    var itemLabel: String = ""
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        
+        myImage.image = itemImage
+        myLabel.text = itemLabel
+        
         // Do any additional setup after loading the view.
     }
 
