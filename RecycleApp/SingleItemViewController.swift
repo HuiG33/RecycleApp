@@ -10,14 +10,17 @@ import UIKit
 
 class SingleItemViewController: UIViewController {
 
-    var labelText: String = ""
-    
+    @IBOutlet weak var myImage: UIImageView!
     @IBOutlet weak var myLabel: UILabel!
+    
+    var itemImage: UIImage?
+    var itemLabel: String = ""
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        myLabel.text = labelText
+        myImage.image = itemImage
+        myLabel.text = itemLabel
         
         // Do any additional setup after loading the view.
     }

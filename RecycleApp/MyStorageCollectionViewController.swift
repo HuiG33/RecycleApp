@@ -14,7 +14,7 @@ class MyStorageCollectionViewController: UICollectionViewController {
 
     let myItems: [String] = ["zero","one","two","three","four","five","six","seven","eight","nine"]
     
-    var selectedItem: String = ""
+    var selectedItemLabel: String = ""
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -100,10 +100,11 @@ class MyStorageCollectionViewController: UICollectionViewController {
     */
 
     override func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        selectedItem = myItems[indexPath.item]
+        selectedItemLabel = myItems[indexPath.item]
         let mainStoryBoard:UIStoryboard = UIStoryboard(name: "Main", bundle: nil)
         let SIVC = mainStoryBoard.instantiateViewController(withIdentifier: "singleItem") as! SingleItemViewController
-        SIVC.labelText = selectedItem
+        SIVC.itemLabel = selectedItemLabel
+        SIVC.itemImage = #imageLiteral(resourceName: "defaultItem")
         self.navigationController?.pushViewController(SIVC, animated: true)
     }
 }
