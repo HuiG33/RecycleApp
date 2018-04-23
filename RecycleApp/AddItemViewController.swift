@@ -8,8 +8,10 @@
 
 import UIKit
 
-class AddItemViewController: UIViewController, UINavigationControllerDelegate, UIImagePickerControllerDelegate {
+class AddItemViewController: UIViewController, UINavigationControllerDelegate, UIImagePickerControllerDelegate, UITextFieldDelegate {
     
+    @IBOutlet weak var itemName: UITextField!
+    @IBOutlet weak var saveItem: UIButton!
     @IBOutlet weak var selectedImage: UIImageView!
     
     @IBAction func takePicture(_ sender: UIButton) {
@@ -43,6 +45,7 @@ class AddItemViewController: UIViewController, UINavigationControllerDelegate, U
         if let image = info[UIImagePickerControllerOriginalImage] as? UIImage
         {
             selectedImage.image = image
+            updateSaveButtonState()
         }
         else
         {
@@ -56,9 +59,38 @@ class AddItemViewController: UIViewController, UINavigationControllerDelegate, U
         self.dismiss(animated: true, completion: nil)
     }
     
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        // Hide the keyboard.
+        textField.resignFirstResponder()
+        return true
+    }
+    
+    func textFieldDidBeginEditing(_ textField: UITextField) {
+        saveItem.isEnabled = false
+    }
+    
+    func textFieldDidEndEditing(_ textField: UITextField) {
+        updateSaveButtonState()
+        
+    }
+    
+    func updateSaveButtonState() {
+        let image = selectedImage.image ?? nil
+        let text = itemName.text ?? ""
+        
+        if image == nil || text.isEmpty{
+            saveItem.isEnabled = false
+        } else {
+            saveItem.isEnabled = true
+        }
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
+        itemName.delegate = self
+        
+        updateSaveButtonState()
         // Do any additional setup after loading the view.
     }
 
